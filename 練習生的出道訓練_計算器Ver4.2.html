@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>練習生的出道訓練 · 第1回</title>
+    <style>
+        :root {
+            --bg-page: #f0f2f8;
+            --bg-container: #ffffff;
+            --border-color: #cbd2e6;
+            --header-bg: linear-gradient(135deg, #6b52ae 0%, #8a70d6 100%);
+            --header-text: #ffffff;
+            --task-box-bg: #f8f7fc;
+            --task-box-border: #8a70d6;
+            --text-primary: #252236;
+            --text-secondary: #686280;
+            --btn-bg: #ebe7f8;
+            --btn-hover: #7b61c4;
+            --btn-text: #543d99;
+            --btn-hover-text: #ffffff;
+            --accent-score: #6b52ae;
+            --link-color: #6b52ae;
+            --shadow: 0 8px 28px rgba(72, 54, 128, 0.10);
+            --date-active-bg: #6b52ae;
+            --date-active-text: #ffffff;
+            --date-inactive-bg: #f8f7fc;
+            --time-color: #6b52ae;
+            --sidebar-bg: #f8f7fc;
+            --sidebar-active: #6b52ae;
+            --sidebar-active-text: #ffffff;
+            --font-scale: 1;
+        }
+
+        body.dark-mode {
+            --bg-page: #13121a; --bg-container: #1d1b26; --border-color: #343045;
+            --header-bg: linear-gradient(135deg, #4b3882 0%, #684fb0 100%); --header-text: #f5f3ff;
+            --task-box-bg: #262333; --task-box-border: #7b61c4;
+            --text-primary: #f2f0fa; --text-secondary: #a29bb8;
+            --btn-bg: #2d293d; --btn-hover: #8a70d6; --btn-text: #d6ccff; --btn-hover-text: #ffffff;
+            --accent-score: #b39eff; --link-color: #b39eff; --shadow: 0 10px 32px rgba(0,0,0,0.45);
+            --date-active-bg: #8a70d6; --date-active-text: #ffffff; --date-inactive-bg: #262333;
+            --time-color: #b39eff; --sidebar-bg: #1a1824; --sidebar-active: #8a70d6; --sidebar-active-text: #ffffff;
+        }
+        body.cyber-mode {
+            --bg-page: #0a0e17; --bg-container: #111827; --border-color: #1e3a5f;
+            --header-bg: linear-gradient(135deg, #00f0ff 0%, #0080ff 50%, #7000ff 100%); --header-text: #0a0e17;
+            --task-box-bg: #0f172a; --task-box-border: #00f0ff;
+            --text-primary: #e0f2fe; --text-secondary: #7dd3fc;
+            --btn-bg: #0c4a6e; --btn-hover: #00f0ff; --btn-text: #67e8f9; --btn-hover-text: #0a0e17;
+            --accent-score: #00f0ff; --link-color: #00f0ff; --shadow: 0 10px 32px rgba(0,240,255,0.15);
+            --date-active-bg: #00f0ff; --date-active-text: #0a0e17; --date-inactive-bg: #0f172a;
+            --time-color: #00f0ff; --sidebar-bg: #0b1220; --sidebar-active: #00f0ff; --sidebar-active-text: #0a0e17;
+        }
+        body.sakura-mode {
+            --bg-page: #fff5f7; --bg-container: #ffffff; --border-color: #f9c2d0;
+            --header-bg: linear-gradient(135deg, #ff85a2 0%, #ffb3c6 50%, #ffc2d1 100%); --header-text: #ffffff;
+            --task-box-bg: #fff0f3; --task-box-border: #ff85a2;
+            --text-primary: #5c2a3a; --text-secondary: #a85c6e;
+            --btn-bg: #ffe4ec; --btn-hover: #ff85a2; --btn-text: #d4506e; --btn-hover-text: #ffffff;
+            --accent-score: #e85a7a; --link-color: #e85a7a; --shadow: 0 8px 28px rgba(255,133,162,0.18);
+            --date-active-bg: #ff85a2; --date-active-text: #ffffff; --date-inactive-bg: #fff0f3;
+            --time-color: #e85a7a; --sidebar-bg: #fff0f3; --sidebar-active: #ff85a2; --sidebar-active-text: #ffffff;
+        }
+        body.eva-mode {
+            --bg-page: #0d0f12; --bg-container: #15181e; --border-color: #2a2f3a;
+            --header-bg: linear-gradient(135deg, #6b2d8b 0%, #3d8b4a 50%, #8b2d6b 100%); --header-text: #e8f5e9;
+            --task-box-bg: #1a1e26; --task-box-border: #7b3fa0;
+            --text-primary: #e0e6ed; --text-secondary: #8fa0b3;
+            --btn-bg: #252a35; --btn-hover: #4caf50; --btn-text: #a5d6a7; --btn-hover-text: #0d0f12;
+            --accent-score: #69f0ae; --link-color: #ab47bc; --shadow: 0 10px 32px rgba(107,45,139,0.25);
+            --date-active-bg: #7b3fa0; --date-active-text: #e8f5e9; --date-inactive-bg: #1a1e26;
+            --time-color: #69f0ae; --sidebar-bg: #12151b; --sidebar-active: #7b3fa0; --sidebar-active-text: #e8f5e9;
+        }
+        body.nature-mode {
+            --bg-page: #f0f7f0; --bg-container: #ffffff; --border-color: #c8e0c8;
+            --header-bg: linear-gradient(135deg, #4caf50 0%, #81c784 50%, #a5d6a7 100%); --header-text: #ffffff;
+            --task-box-bg: #e8f5e9; --task-box-border: #66bb6a;
+            --text-primary: #1b3a1b; --text-secondary: #4a704a;
+            --btn-bg: #c8e6c9; --btn-hover: #43a047; --btn-text: #2e7d32; --btn-hover-text: #ffffff;
+            --accent-score: #2e7d32; --link-color: #388e3c; --shadow: 0 8px 28px rgba(76,175,80,0.15);
+            --date-active-bg: #66bb6a; --date-active-text: #ffffff; --date-inactive-bg: #e8f5e9;
+            --time-color: #2e7d32; --sidebar-bg: #e8f5e9; --sidebar-active: #4caf50; --sidebar-active-text: #ffffff;
+        }
+        body.vivid-mode {
+            --bg-page: #fff8e1; --bg-container: #ffffff; --border-color: #ffcc80;
+            --header-bg: linear-gradient(135deg, #ff5722 0%, #ff9800 50%, #ffc107 100%); --header-text: #ffffff;
+            --task-box-bg: #fff3e0; --task-box-border: #ff7043;
+            --text-primary: #3e2723; --text-secondary: #8d6e63;
+            --btn-bg: #ffe0b2; --btn-hover: #ff5722; --btn-text: #e64a19; --btn-hover-text: #ffffff;
+            --accent-score: #d84315; --link-color: #e65100; --shadow: 0 8px 28px rgba(255,87,34,0.18);
+            --date-active-bg: #ff5722; --date-active-text: #ffffff; --date-inactive-bg: #fff3e0;
+            --time-color: #d84315; --sidebar-bg: #fff3e0; --sidebar-active: #ff5722; --sidebar-active-text: #ffffff;
+        }
+        body.blackgray-mode {
+            --bg-page: #0c0c0c; --bg-container: #1a1a1a; --border-color: #333;
+            --header-bg: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #404040 100%); --header-text: #e0e0e0;
+            --task-box-bg: #222; --task-box-border: #555;
+            --text-primary: #e8e8e8; --text-secondary: #999;
+            --btn-bg: #2a2a2a; --btn-hover: #555; --btn-text: #ccc; --btn-hover-text: #fff;
+            --accent-score: #b0b0b0; --link-color: #a0a0a0; --shadow: 0 10px 32px rgba(0,0,0,0.5);
+            --date-active-bg: #555; --date-active-text: #fff; --date-inactive-bg: #222;
+            --time-color: #b0b0b0; --sidebar-bg: #141414; --sidebar-active: #444; --sidebar-active-text: #fff;
+        }
+        body.scarlet-mode {
+            --bg-page: #1a0a0f; --bg-container: #240f16; --border-color: #4a1c2a;
+            --header-bg: linear-gradient(135deg, #8b1a3a 0%, #c41e3a 50%, #e85a7a 100%); --header-text: #fff0f3;
+            --task-box-bg: #2e121c; --task-box-border: #c41e3a;
+            --text-primary: #fce4ec; --text-secondary: #e0a0b0;
+            --btn-bg: #3d1525; --btn-hover: #c41e3a; --btn-text: #f8bbd0; --btn-hover-text: #fff;
+            --accent-score: #ff6b8a; --link-color: #ff6b8a; --shadow: 0 10px 32px rgba(196,30,58,0.25);
+            --date-active-bg: #c41e3a; --date-active-text: #fff; --date-inactive-bg: #2e121c;
+            --time-color: #ff6b8a; --sidebar-bg: #1e0c12; --sidebar-active: #c41e3a; --sidebar-active-text: #fff;
+        }
+        body.hacker-mode {
+            --bg-page: #000; --bg-container: #0a0f0a; --border-color: #0d3b0d;
+            --header-bg: linear-gradient(135deg, #003300 0%, #00aa00 50%, #00ff41 100%); --header-text: #000;
+            --task-box-bg: #0d1a0d; --task-box-border: #00ff41;
+            --text-primary: #00ff41; --text-secondary: #00aa33;
+            --btn-bg: #0a1f0a; --btn-hover: #00ff41; --btn-text: #00cc33; --btn-hover-text: #000;
+            --accent-score: #00ff41; --link-color: #00ff41; --shadow: 0 10px 32px rgba(0,255,65,0.15);
+            --date-active-bg: #00ff41; --date-active-text: #000; --date-inactive-bg: #0d1a0d;
+            --time-color: #00ff41; --sidebar-bg: #050a05; --sidebar-active: #00ff41; --sidebar-active-text: #000;
+        }
+        body.sunrise-mode {
+            --bg-page: #fff5eb; --bg-container: #ffffff; --border-color: #ffd4a8;
+            --header-bg: linear-gradient(135deg, #ff9a56 0%, #ff6b35 40%, #ff4757 100%); --header-text: #fff;
+            --task-box-bg: #fff0e0; --task-box-border: #ff9a56;
+            --text-primary: #4a2c1a; --text-secondary: #a06b4a;
+            --btn-bg: #ffe0c0; --btn-hover: #ff6b35; --btn-text: #d45a20; --btn-hover-text: #fff;
+            --accent-score: #e85d04; --link-color: #e85d04; --shadow: 0 8px 28px rgba(255,107,53,0.18);
+            --date-active-bg: #ff6b35; --date-active-text: #fff; --date-inactive-bg: #fff0e0;
+            --time-color: #e85d04; --sidebar-bg: #fff0e0; --sidebar-active: #ff6b35; --sidebar-active-text: #fff;
+        }
+        body.cotton-mode {
+            --bg-page: #f5f0ff; --bg-container: #ffffff; --border-color: #e0d4f7;
+            --header-bg: linear-gradient(135deg, #c9b1ff 0%, #ffcce0 50%, #b8e0ff 100%); --header-text: #4a3a6b;
+            --task-box-bg: #f8f4ff; --task-box-border: #c9b1ff;
+            --text-primary: #3d2e5c; --text-secondary: #8a7aa8;
+            --btn-bg: #efe8ff; --btn-hover: #c9b1ff; --btn-text: #7b5ea7; --btn-hover-text: #fff;
+            --accent-score: #9b7ed9; --link-color: #9b7ed9; --shadow: 0 8px 28px rgba(201,177,255,0.2);
+            --date-active-bg: #c9b1ff; --date-active-text: #4a3a6b; --date-inactive-bg: #f8f4ff;
+            --time-color: #9b7ed9; --sidebar-bg: #f8f4ff; --sidebar-active: #c9b1ff; --sidebar-active-text: #4a3a6b;
+        }
+        /* 彩虹風格 */
+        body.rainbow-mode {
+            --bg-page: #1a1025; --bg-container: #241833; --border-color: #4a3560;
+            --header-bg: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3, #54a0ff); --header-text: #1a1025;
+            --task-box-bg: #2e2045; --task-box-border: #ff9ff3;
+            --text-primary: #f5e6ff; --text-secondary: #c9a0e8;
+            --btn-bg: #3d2a5c; --btn-hover: #ff9ff3; --btn-text: #e0b0ff; --btn-hover-text: #1a1025;
+            --accent-score: #48dbfb; --link-color: #ff9ff3; --shadow: 0 10px 32px rgba(255,159,243,0.2);
+            --date-active-bg: #ff9ff3; --date-active-text: #1a1025; --date-inactive-bg: #2e2045;
+            --time-color: #48dbfb; --sidebar-bg: #1e1230; --sidebar-active: #ff9ff3; --sidebar-active-text: #1a1025;
+        }
+        /* 森林風格 */
+        body.forest-mode {
+            --bg-page: #0f1a12; --bg-container: #16241a; --border-color: #2a4a32;
+            --header-bg: linear-gradient(135deg, #1b4332 0%, #2d6a4f 40%, #40916c 100%); --header-text: #d8f3dc;
+            --task-box-bg: #1b2e22; --task-box-border: #40916c;
+            --text-primary: #d8f3dc; --text-secondary: #95d5b2;
+            --btn-bg: #243d2e; --btn-hover: #40916c; --btn-text: #95d5b2; --btn-hover-text: #0f1a12;
+            --accent-score: #74c69d; --link-color: #74c69d; --shadow: 0 10px 32px rgba(64,145,108,0.2);
+            --date-active-bg: #40916c; --date-active-text: #d8f3dc; --date-inactive-bg: #1b2e22;
+            --time-color: #74c69d; --sidebar-bg: #121f16; --sidebar-active: #40916c; --sidebar-active-text: #d8f3dc;
+        }
+        /* 極簡風格 */
+        body.minimal-mode {
+            --bg-page: #fafafa; --bg-container: #ffffff; --border-color: #e0e0e0;
+            --header-bg: linear-gradient(135deg, #424242 0%, #616161 100%); --header-text: #ffffff;
+            --task-box-bg: #f5f5f5; --task-box-border: #9e9e9e;
+            --text-primary: #212121; --text-secondary: #757575;
+            --btn-bg: #eeeeee; --btn-hover: #616161; --btn-text: #424242; --btn-hover-text: #ffffff;
+            --accent-score: #424242; --link-color: #616161; --shadow: 0 4px 16px rgba(0,0,0,0.08);
+            --date-active-bg: #616161; --date-active-text: #ffffff; --date-inactive-bg: #f5f5f5;
+            --time-color: #616161; --sidebar-bg: #f5f5f5; --sidebar-active: #424242; --sidebar-active-text: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang HK", "Microsoft JhengHei", sans-serif;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 16px 10px;
+            font-size: calc(15px * var(--font-scale));
+            overflow-x: hidden;
+        }
+
+        .app-layout {
+            display: flex;
+            width: 100%;
+            max-width: 1000px;
+            gap: 0;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            background: var(--bg-container);
+            position: relative;
+        }
+
+        /* 左上角使用教學按鈕 */
+        .help-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 50;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1.5px solid var(--border-color);
+            background: var(--task-box-bg);
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.18s;
+        }
+        .help-btn:hover {
+            background: var(--btn-hover);
+            color: var(--btn-hover-text);
+            border-color: var(--btn-hover);
+        }
+        .help-tooltip {
+            position: absolute;
+            top: 38px;
+            left: 0;
+            background: var(--bg-container);
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-primary);
+            white-space: nowrap;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.15s;
+            z-index: 60;
+        }
+        .help-btn:hover + .help-tooltip,
+        .help-btn:focus + .help-tooltip { opacity: 1; }
+
+        /* 右上角字體大小（按鈕固定大尺寸，方便點擊／老花） */
+        .font-size-wrap {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--task-box-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 6px 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        .font-size-wrap span {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-secondary);
+            margin-right: 4px;
+        }
+        .font-btn {
+            min-width: 42px;
+            height: 40px;
+            padding: 0 8px;
+            border: none;
+            border-radius: 8px;
+            background: transparent;
+            color: var(--text-primary);
+            font-size: 20px;
+            font-weight: 800;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .font-btn:hover, .font-btn.active {
+            background: var(--sidebar-active);
+            color: var(--sidebar-active-text);
+        }
+
+        .sidebar {
+            width: 128px;
+            min-width: 128px;
+            background: var(--sidebar-bg);
+            border-right: 1.5px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            padding: 56px 0 14px;
+            gap: 5px;
+        }
+
+        .sidebar-title {
+            text-align: center;
+            font-size: calc(12px * var(--font-scale));
+            font-weight: 800;
+            color: var(--text-secondary);
+            padding: 0 8px 10px;
+            letter-spacing: 1px;
+            border-bottom: 1px dashed var(--border-color);
+            margin-bottom: 6px;
+        }
+
+        .person-tab {
+            margin: 0 8px;
+            padding: 9px 6px;
+            border-radius: 10px;
+            border: 1.5px solid transparent;
+            background: transparent;
+            color: var(--text-primary);
+            font-size: calc(13px * var(--font-scale));
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.18s ease;
+            line-height: 1.25;
+            position: relative;
+        }
+        .person-tab:hover { border-color: var(--task-box-border); background: var(--task-box-bg); }
+        .person-tab.active {
+            background: var(--sidebar-active);
+            color: var(--sidebar-active-text);
+            border-color: var(--sidebar-active);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+        }
+        .person-tab .tab-name { display: block; font-weight: 800; word-break: break-word; line-height: 1.2; }
+        .person-tab .tab-meta {
+            display: block;
+            font-size: calc(10px * var(--font-scale));
+            font-weight: 600;
+            opacity: 0.88;
+            margin-top: 3px;
+            line-height: 1.35;
+        }
+        .person-tab .edit-hint { position: absolute; top: 3px; right: 4px; font-size: 9px; opacity: 0.5; }
+        .person-tab:hover .edit-hint { opacity: 0.9; }
+
+        .rename-input {
+            width: 100%;
+            padding: 4px 6px;
+            font-size: calc(12px * var(--font-scale));
+            font-weight: 700;
+            text-align: center;
+            border: 1.5px solid var(--task-box-border);
+            border-radius: 6px;
+            background: var(--bg-container);
+            color: var(--text-primary);
+            outline: none;
+        }
+
+        .main-wrapper {
+            flex: 1;
+            padding: 56px 26px 22px;
+            position: relative;
+            min-width: 0;
+        }
+
+        .title-banner {
+            width: 100%;
+            background: var(--header-bg);
+            color: var(--header-text);
+            text-align: center;
+            font-size: calc(21px * var(--font-scale));
+            font-weight: 800;
+            letter-spacing: 2px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(107,82,174,0.22);
+            word-break: break-word;
+        }
+
+        .total-section {
+            text-align: center;
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .total-label { font-size: calc(26px * var(--font-scale)); font-weight: 800; letter-spacing: 2px; }
+        .total-value { font-size: calc(40px * var(--font-scale)); font-weight: 900; color: var(--accent-score); min-width: 48px; }
+
+        .reset-btn {
+            margin-left: 10px;
+            padding: 5px 12px;
+            font-size: calc(12px * var(--font-scale));
+            font-weight: 700;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--task-box-bg);
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+        .reset-btn:hover { background: var(--btn-hover); color: #fff; border-color: var(--btn-hover); }
+
+        .total-update-time {
+            text-align: center;
+            font-size: calc(13px * var(--font-scale));
+            font-weight: 600;
+            color: var(--time-color);
+            margin-bottom: 14px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed var(--border-color);
+            letter-spacing: 0.5px;
+            word-break: break-word;
+        }
+
+        .grid-header {
+            display: grid;
+            grid-template-columns: 1fr 38px 50px 38px 56px 120px;
+            align-items: center;
+            margin-bottom: 8px;
+            padding: 0 4px;
+            font-size: calc(12px * var(--font-scale));
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .task-list { display: flex; flex-direction: column; gap: 9px; }
+
+        .task-row {
+            display: grid;
+            grid-template-columns: 1fr 38px 50px 38px 56px 120px;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .task-box {
+            background: var(--task-box-bg);
+            border: 1.5px solid var(--task-box-border);
+            border-radius: 8px;
+            padding: 8px 10px;
+            text-align: center;
+            font-size: calc(13px * var(--font-scale));
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 5px;
+            min-width: 0;
+        }
+        .task-box-title { flex: 1; text-align: center; word-break: break-word; }
+        .task-hint {
+            font-size: calc(10px * var(--font-scale));
+            color: var(--text-secondary);
+            background: var(--bg-container);
+            padding: 2px 5px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        .step-btn {
+            width: 32px; height: 32px;
+            margin: 0 auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--btn-bg);
+            color: var(--btn-text);
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+        }
+        .step-btn:hover { background: var(--btn-hover); color: var(--btn-hover-text); border-color: var(--btn-hover); }
+        .step-btn:active { transform: scale(0.93); }
+
+        .count-display { text-align: center; font-size: calc(15px * var(--font-scale)); font-weight: 700; }
+        .score-display { text-align: center; font-size: calc(15px * var(--font-scale)); font-weight: 800; color: var(--accent-score); }
+        .row-update-time {
+            text-align: center;
+            font-size: calc(11px * var(--font-scale));
+            font-weight: 600;
+            color: var(--time-color);
+            letter-spacing: 0.2px;
+            white-space: nowrap;
+        }
+        .mobile-label { display: none; }
+
+        .date-section { margin-top: 20px; padding-top: 14px; border-top: 1px dashed var(--border-color); }
+        .date-title {
+            text-align: center;
+            font-size: calc(15px * var(--font-scale));
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            padding: 7px 12px;
+            background: var(--task-box-bg);
+            border: 1.5px solid var(--task-box-border);
+            border-radius: 8px;
+            display: inline-block;
+            width: 100%;
+        }
+        .date-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+        .date-cell {
+            background: var(--date-inactive-bg);
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px 2px;
+            text-align: center;
+            font-size: calc(11px * var(--font-scale));
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.18s ease;
+            min-width: 0;
+            word-break: break-word;
+        }
+        .date-cell:hover { border-color: var(--task-box-border); transform: translateY(-1px); }
+        .date-cell.active {
+            background: var(--date-active-bg);
+            color: var(--date-active-text);
+            border-color: var(--date-active-bg);
+            font-weight: 700;
+        }
+        .date-cell.completed-count {
+            background: var(--task-box-bg);
+            border: 1.5px solid var(--task-box-border);
+            color: var(--accent-score);
+            font-weight: 800;
+            cursor: default;
+            pointer-events: none;
+        }
+        .date-cell.completed-count:hover { transform: none; border-color: var(--task-box-border); }
+
+        .footer-controls {
+            margin-top: 22px;
+            padding-top: 14px;
+            border-top: 1px dashed var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .credits-box {
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px 12px;
+            background: var(--task-box-bg);
+            font-size: calc(12px * var(--font-scale));
+            line-height: 1.65;
+            color: var(--text-primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            max-width: 100%;
+            word-break: break-word;
+        }
+        .credits-box strong { color: var(--text-secondary); font-weight: 700; }
+        .credits-link {
+            color: var(--link-color);
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 1.5px solid transparent;
+        }
+        .credits-link:hover { border-bottom-color: var(--link-color); }
+
+        .theme-trigger-wrap { position: relative; }
+        .theme-trigger-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            background: var(--task-box-bg);
+            color: var(--text-primary);
+            font-size: calc(13px * var(--font-scale));
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            user-select: none;
+        }
+        .theme-trigger-btn:hover { border-color: var(--task-box-border); }
+        .theme-trigger-btn .arrow { font-size: 11px; transition: transform 0.2s; }
+        .theme-trigger-btn.open .arrow { transform: rotate(180deg); }
+
+        .theme-dropdown {
+            position: absolute;
+            bottom: calc(100% + 8px);
+            right: 0;
+            width: 200px;
+            max-height: 380px;
+            overflow-y: auto;
+            background: var(--bg-container);
+            border: 1.5px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+            display: none;
+            z-index: 100;
+            animation: dropIn 0.18s ease-out;
+        }
+        .theme-dropdown.show { display: block; }
+        @keyframes dropIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .theme-dropdown-item {
+            padding: 9px 13px;
+            font-size: calc(12px * var(--font-scale));
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            transition: background 0.15s;
+        }
+        .theme-dropdown-item:last-child { border-bottom: none; }
+        .theme-dropdown-item:hover { background: var(--task-box-bg); }
+        .theme-dropdown-item.active {
+            background: var(--sidebar-active);
+            color: var(--sidebar-active-text);
+            font-weight: 800;
+        }
+        .theme-swatch {
+            width: 14px; height: 14px;
+            border-radius: 4px;
+            border: 1.5px solid rgba(0,0,0,0.15);
+            flex-shrink: 0;
+        }
+
+        /* 使用教學可移動視窗 */
+        .help-window {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 360px;
+            max-width: 92vw;
+            max-height: 70vh;
+            background: var(--bg-container);
+            border: 2px solid var(--task-box-border);
+            border-radius: 14px;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.28);
+            z-index: 9000;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .help-window.show { display: flex; }
+        .help-window-header {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 10px 14px;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: move;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        .help-window-close {
+            background: rgba(0,0,0,0.2);
+            border: none;
+            color: inherit;
+            width: 26px; height: 26px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .help-window-body {
+            padding: 14px 16px;
+            overflow-y: auto;
+            font-size: calc(13px * var(--font-scale));
+            line-height: 1.7;
+            color: var(--text-primary);
+        }
+        .help-window-body h4 {
+            margin: 12px 0 4px;
+            color: var(--accent-score);
+            font-size: calc(14px * var(--font-scale));
+        }
+        .help-window-body h4:first-child { margin-top: 0; }
+        .help-window-body ul { padding-left: 18px; margin: 0 0 6px; }
+        .help-window-body li { margin-bottom: 3px; }
+
+        .modal-backdrop {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.55);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .modal-backdrop.show { display: flex; }
+        .modal-card {
+            background: var(--bg-container);
+            border: 2px solid var(--task-box-border);
+            border-radius: 16px;
+            padding: 26px 28px;
+            max-width: 340px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+            animation: popScale 0.22s ease-out;
+        }
+        @keyframes popScale {
+            from { transform: scale(0.85); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .modal-emoji { font-size: 42px; margin-bottom: 6px; }
+        .modal-title { font-size: 20px; font-weight: 800; color: var(--accent-score); margin-bottom: 6px; }
+        .modal-msg { font-size: 14px; color: var(--text-secondary); margin-bottom: 18px; line-height: 1.5; }
+        .modal-confirm {
+            background: var(--header-bg);
+            color: #fff;
+            border: none;
+            padding: 9px 28px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* ===== 桌面版極大字體模式（老花／視力較弱）===== */
+        @media (min-width: 721px) {
+            body.xl-font .title-banner {
+                font-size: calc(18px * var(--font-scale) / 1.4);
+                letter-spacing: 1px;
+                padding: 14px 12px;
+            }
+            body.xl-font .total-label {
+                font-size: calc(22px * var(--font-scale) / 1.5);
+            }
+            body.xl-font .total-value {
+                font-size: calc(34px * var(--font-scale) / 1.5);
+            }
+            body.xl-font .grid-header,
+            body.xl-font .task-row {
+                grid-template-columns: 1fr 42px 56px 42px 64px minmax(100px, 1.2fr);
+                gap: 6px;
+            }
+            body.xl-font .task-box {
+                flex-direction: column;
+                gap: 4px;
+                padding: 10px 8px;
+            }
+            body.xl-font .task-hint {
+                white-space: normal;
+            }
+            body.xl-font .step-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+            body.xl-font .row-update-time {
+                white-space: normal;
+                line-height: 1.25;
+                word-break: break-all;
+            }
+            body.xl-font .sidebar {
+                width: 150px;
+                min-width: 150px;
+            }
+            body.xl-font .person-tab {
+                padding: 12px 8px;
+            }
+            body.xl-font .date-cell {
+                padding: 12px 4px;
+            }
+            body.xl-font .main-wrapper {
+                padding: 48px 20px 24px;
+            }
+        }
+
+        /* ===== 手機版優化 ===== */
+        @media (max-width: 720px) {
+            body { padding: 8px 6px; }
+            .app-layout { flex-direction: column; max-width: 100%; border-radius: 14px; }
+            .help-btn { top: 8px; left: 8px; width: 26px; height: 26px; font-size: 13px; }
+            .font-size-wrap { top: 6px; right: 6px; padding: 5px 8px; gap: 4px; }
+            .font-size-wrap span { font-size: 15px; }
+            .font-btn { min-width: 36px; height: 34px; font-size: 17px; padding: 0 6px; }
+
+            .sidebar {
+                width: 100%;
+                min-width: 0;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 52px 6px 10px;
+                border-right: none;
+                border-bottom: 1.5px solid var(--border-color);
+                gap: 5px;
+            }
+            .sidebar-title { width: 100%; border-bottom: none; margin-bottom: 2px; padding-bottom: 2px; }
+            .person-tab { margin: 0; padding: 7px 6px; min-width: 72px; font-size: calc(12px * var(--font-scale)); }
+            .person-tab .tab-meta { font-size: calc(9px * var(--font-scale)); }
+
+            .main-wrapper { padding: 14px 10px 16px; }
+            .title-banner { font-size: calc(16px * var(--font-scale)); padding: 10px 8px; letter-spacing: 1px; }
+            .total-label { font-size: calc(20px * var(--font-scale)); }
+            .total-value { font-size: calc(30px * var(--font-scale)); }
+            .grid-header, .task-row {
+                grid-template-columns: 1fr 28px 38px 28px 42px 78px;
+                gap: 2px;
+            }
+            .task-box { padding: 6px 4px; font-size: calc(11px * var(--font-scale)); flex-direction: column; gap: 2px; }
+            .step-btn { width: 26px; height: 26px; font-size: 14px; }
+            .row-update-time { font-size: calc(9px * var(--font-scale)); }
+            .date-grid { gap: 4px; }
+            .date-cell { font-size: calc(10px * var(--font-scale)); padding: 6px 1px; }
+            .theme-dropdown { width: 180px; max-height: 280px; right: 0; }
+            .help-window { width: 94vw; top: 50px; max-height: 75vh; }
+            .credits-box { font-size: calc(11px * var(--font-scale)); }
+
+            /* ===== 手機版：大字體（1.35x）與極大字體（2.2x）卡片式響應式重排 ===== */
+            body.lg-font .sidebar,
+            body.xl-font .sidebar {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+                padding: 54px 8px 12px;
+            }
+            body.lg-font .sidebar-title,
+            body.xl-font .sidebar-title {
+                grid-column: 1 / -1;
+            }
+            body.lg-font .person-tab,
+            body.xl-font .person-tab {
+                min-width: 0;
+                width: 100%;
+                padding: 10px 6px;
+            }
+            body.xl-font .person-tab:last-child {
+                grid-column: 1 / -1;
+            }
+
+            /* 隱藏桌面表頭，改用卡片內標籤與兩層排版，避免任務框被擠成直排 */
+            body.lg-font .grid-header,
+            body.xl-font .grid-header {
+                display: none;
+            }
+            body.lg-font .task-list,
+            body.xl-font .task-list {
+                gap: 12px;
+            }
+            body.lg-font .task-row,
+            body.xl-font .task-row {
+                display: grid;
+                grid-template-columns: 44px 1fr 44px;
+                grid-template-areas:
+                    "box box box"
+                    "minus count plus"
+                    "score score score"
+                    "time time time";
+                gap: 8px 6px;
+                background: var(--bg-container);
+                border: 1.5px solid var(--border-color);
+                border-radius: 12px;
+                padding: 10px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            }
+            body.xl-font .task-row {
+                grid-template-columns: 52px 1fr 52px;
+                padding: 12px 10px;
+                gap: 10px 8px;
+            }
+            body.lg-font .task-box,
+            body.xl-font .task-box {
+                grid-area: box;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 10px 8px;
+                gap: 6px;
+            }
+            body.lg-font .task-box-title,
+            body.xl-font .task-box-title {
+                font-size: calc(14px * var(--font-scale));
+                line-height: 1.35;
+                word-break: break-word;
+            }
+            body.xl-font .task-box-title {
+                font-size: calc(13px * var(--font-scale));
+            }
+            body.lg-font .task-hint,
+            body.xl-font .task-hint {
+                white-space: normal;
+                font-size: calc(11px * var(--font-scale));
+                padding: 3px 8px;
+            }
+            body.xl-font .task-hint {
+                font-size: calc(10.5px * var(--font-scale));
+            }
+            body.lg-font .step-minus,
+            body.xl-font .step-minus {
+                grid-area: minus;
+            }
+            body.lg-font .count-display,
+            body.xl-font .count-display {
+                grid-area: count;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 4px;
+                font-size: calc(18px * var(--font-scale));
+            }
+            body.lg-font .step-plus,
+            body.xl-font .step-plus {
+                grid-area: plus;
+            }
+            body.lg-font .step-btn,
+            body.xl-font .step-btn {
+                width: 42px;
+                height: 42px;
+                font-size: 22px;
+            }
+            body.xl-font .step-btn {
+                width: 48px;
+                height: 48px;
+                font-size: 26px;
+            }
+            body.lg-font .score-display,
+            body.xl-font .score-display {
+                grid-area: score;
+                background: var(--task-box-bg);
+                border-radius: 8px;
+                padding: 6px 10px;
+                font-size: calc(16px * var(--font-scale));
+            }
+            body.lg-font .row-update-time,
+            body.xl-font .row-update-time {
+                grid-area: time;
+                white-space: normal;
+                word-break: break-word;
+                font-size: calc(11px * var(--font-scale));
+                line-height: 1.35;
+                padding-top: 2px;
+            }
+            body.xl-font .row-update-time {
+                font-size: calc(10px * var(--font-scale));
+            }
+            body.lg-font .mobile-label,
+            body.xl-font .mobile-label {
+                display: inline;
+                font-weight: 700;
+                color: var(--text-secondary);
+                margin-right: 4px;
+            }
+
+            /* 日數記錄網格：大字體改 3 欄，極大字體改 2 欄，防止右側日期文字被截斷 */
+            body.lg-font .date-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+            }
+            body.lg-font .date-cell {
+                font-size: calc(11px * var(--font-scale));
+                padding: 8px 4px;
+            }
+            body.lg-font .date-cell.completed-count {
+                grid-column: span 2;
+            }
+
+            body.xl-font .date-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            body.xl-font .date-cell {
+                font-size: calc(10.5px * var(--font-scale));
+                padding: 10px 4px;
+            }
+            body.xl-font .date-cell.completed-count {
+                grid-column: 1 / -1;
+            }
+
+            /* 頁尾與標題在極大字體下的比例平衡 */
+            body.xl-font .title-banner {
+                font-size: calc(13px * var(--font-scale));
+                line-height: 1.35;
+            }
+            body.xl-font .total-label {
+                font-size: calc(16px * var(--font-scale));
+            }
+            body.xl-font .total-value {
+                font-size: calc(24px * var(--font-scale));
+            }
+            body.xl-font .footer-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            body.xl-font .theme-trigger-wrap,
+            body.xl-font .theme-trigger-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            body.xl-font .theme-dropdown {
+                width: 100%;
+                left: 0;
+                right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-layout">
+        <!-- 左上角使用教學 -->
+        <button class="help-btn" id="helpBtn" onclick="openHelp()" title="使用教學">?</button>
+        <div class="help-tooltip">使用教學</div>
+
+        <!-- 右上角字體大小（含老花／極大字） -->
+        <div class="font-size-wrap">
+            <span>字</span>
+            <button class="font-btn" data-scale="0.9" onclick="setFontSize(0.9)">小</button>
+            <button class="font-btn active" data-scale="1" onclick="setFontSize(1)">中</button>
+            <button class="font-btn" data-scale="1.35" onclick="setFontSize(1.35)">大</button>
+            <button class="font-btn" data-scale="2.2" onclick="setFontSize(2.2)" title="極大字體（適合老花／視力較弱）">♿</button>
+        </div>
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-title">角色名稱</div>
+        </div>
+
+        <div class="main-wrapper">
+            <div class="title-banner">練習生的出道訓練 · 第1回</div>
+
+            <div class="total-section">
+                <span class="total-label">總分：</span>
+                <span class="total-value" id="totalScore">0</span>
+                <button class="reset-btn" onclick="resetAll()">歸零</button>
+            </div>
+
+            <div class="total-update-time" id="totalUpdateTime">更新時間: --</div>
+
+            <div class="grid-header">
+                <div></div><div></div><div>次數</div><div></div><div>分數</div><div>更新時間</div>
+            </div>
+
+            <div class="task-list" id="taskList"></div>
+
+            <div class="date-section">
+                <div class="date-title">日數記錄</div>
+                <div class="date-grid" id="dateGrid"></div>
+            </div>
+
+            <div class="footer-controls">
+                <div class="credits-box">
+                    <div><strong>製作者:</strong> Th1rTe3n叔</div>
+                    <div><strong>Threads:</strong> <a class="credits-link" href="https://www.threads.com/@_13.shuk" target="_blank" rel="noopener noreferrer">_13.shuk</a></div>
+                    <div><strong>Discord:</strong> im13_</div>
+                </div>
+
+                <div class="theme-trigger-wrap">
+                    <button class="theme-trigger-btn" id="themeTrigger" onclick="toggleThemeDropdown(event)">
+                        <span id="currentThemeLabel">光明</span>
+                        <span class="arrow">▲</span>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown">
+                        <div class="theme-dropdown-item" data-theme="light" onclick="selectTheme('light')"><span class="theme-swatch" style="background:linear-gradient(135deg,#6b52ae,#8a70d6)"></span>光明</div>
+                        <div class="theme-dropdown-item" data-theme="dark" onclick="selectTheme('dark')"><span class="theme-swatch" style="background:linear-gradient(135deg,#4b3882,#684fb0)"></span>暗黑</div>
+                        <div class="theme-dropdown-item" data-theme="cyber" onclick="selectTheme('cyber')"><span class="theme-swatch" style="background:linear-gradient(135deg,#00f0ff,#7000ff)"></span>賽博</div>
+                        <div class="theme-dropdown-item" data-theme="sakura" onclick="selectTheme('sakura')"><span class="theme-swatch" style="background:linear-gradient(135deg,#ff85a2,#ffc2d1)"></span>櫻花粉</div>
+                        <div class="theme-dropdown-item" data-theme="eva" onclick="selectTheme('eva')"><span class="theme-swatch" style="background:linear-gradient(135deg,#6b2d8b,#3d8b4a)"></span>EVA-初號機</div>
+                        <div class="theme-dropdown-item" data-theme="nature" onclick="selectTheme('nature')"><span class="theme-swatch" style="background:linear-gradient(135deg,#4caf50,#a5d6a7)"></span>自然健康</div>
+                        <div class="theme-dropdown-item" data-theme="vivid" onclick="selectTheme('vivid')"><span class="theme-swatch" style="background:linear-gradient(135deg,#ff5722,#ffc107)"></span>活潑高對比</div>
+                        <div class="theme-dropdown-item" data-theme="blackgray" onclick="selectTheme('blackgray')"><span class="theme-swatch" style="background:linear-gradient(135deg,#1a1a1a,#555)"></span>主黑次灰</div>
+                        <div class="theme-dropdown-item" data-theme="scarlet" onclick="selectTheme('scarlet')"><span class="theme-swatch" style="background:linear-gradient(135deg,#8b1a3a,#c41e3a)"></span>緋月</div>
+                        <div class="theme-dropdown-item" data-theme="hacker" onclick="selectTheme('hacker')"><span class="theme-swatch" style="background:linear-gradient(135deg,#003300,#00ff41)"></span>黑客</div>
+                        <div class="theme-dropdown-item" data-theme="sunrise" onclick="selectTheme('sunrise')"><span class="theme-swatch" style="background:linear-gradient(135deg,#ff9a56,#ff4757)"></span>日出</div>
+                        <div class="theme-dropdown-item" data-theme="cotton" onclick="selectTheme('cotton')"><span class="theme-swatch" style="background:linear-gradient(135deg,#c9b1ff,#ffcce0)"></span>棉花糖</div>
+                        <div class="theme-dropdown-item" data-theme="rainbow" onclick="selectTheme('rainbow')"><span class="theme-swatch" style="background:linear-gradient(90deg,#ff6b6b,#feca57,#48dbfb,#ff9ff3)"></span>彩虹</div>
+                        <div class="theme-dropdown-item" data-theme="forest" onclick="selectTheme('forest')"><span class="theme-swatch" style="background:linear-gradient(135deg,#1b4332,#40916c)"></span>森林</div>
+                        <div class="theme-dropdown-item" data-theme="minimal" onclick="selectTheme('minimal')"><span class="theme-swatch" style="background:linear-gradient(135deg,#424242,#9e9e9e)"></span>極簡</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 使用教學視窗 -->
+    <div class="help-window" id="helpWindow">
+        <div class="help-window-header" id="helpDragBar">
+            <span>使用教學</span>
+            <button class="help-window-close" onclick="closeHelp()">×</button>
+        </div>
+        <div class="help-window-body">
+            <h4>📊 計分方式</h4>
+            <ul>
+                <li>前 3 項（M.C.J）：1 次 = 1 分</li>
+                <li>農場小丑的誠意 / 音樂串流使用券：2 個 = 3 分</li>
+                <li>明星幣組合：2 個 = 2 分</li>
+                <li>總分達到 30 分會彈出恭喜視窗</li>
+            </ul>
+            <h4>👤 多角色記錄</h4>
+            <ul>
+                <li>左側有 5 個角色分頁，資料完全獨立</li>
+                <li>預設名稱：正身、分身1～4</li>
+                <li>點 ✎ 或雙擊名稱可重新命名（最多 10 字）</li>
+                <li>手機長按名稱也可改名</li>
+                <li>側邊會顯示每人「分數 · 完成日數」</li>
+            </ul>
+            <h4>📅 日數記錄</h4>
+            <ul>
+                <li>點擊日期格子可點亮／取消</li>
+                <li>最後一格顯示「完成日數」</li>
+                <li>完成日數會即時同步到左側分頁</li>
+            </ul>
+            <h4>⏱ 更新時間</h4>
+            <ul>
+                <li>總分變動時，上方「更新時間」會刷新</li>
+                <li>按 +/- 按鈕時，該項右側時間會更新</li>
+                <li>尚未操作過的顯示為「--」</li>
+            </ul>
+            <h4>🎨 介面與字體</h4>
+            <ul>
+                <li>右下角可開啟風格列表（共 15 種）</li>
+                <li>右上角可調整字體大小：小 / 中 / 大 / ♿極大（約 2.2 倍，適合老花／視力較弱）</li>
+                <li>所有設定與記錄都會自動儲存在本機</li>
+            </ul>
+            <h4>🔄 其他</h4>
+            <ul>
+                <li>「歸零」只會清空目前角色的次數與時間</li>
+                <li>此視窗可拖曳標題列移動位置</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal-backdrop" id="goalModal">
+        <div class="modal-card">
+            <div class="modal-emoji">🎉</div>
+            <div class="modal-title">總分已達 30 分！</div>
+            <div class="modal-msg" id="goalMsg">恭喜！目前總分已達到 30 分出道訓練目標！</div>
+            <button class="modal-confirm" onclick="closeModal()">確定</button>
+        </div>
+    </div>
+
+    <script>
+        const PERSON_COUNT = 5;
+        const DEFAULT_NAMES = ["正身", "分身1", "分身2", "分身3", "分身4"];
+
+        const THEME_LABELS = {
+            light: "光明", dark: "暗黑", cyber: "賽博", sakura: "櫻花粉",
+            eva: "EVA-初號機", nature: "自然健康", vivid: "活潑高對比",
+            blackgray: "主黑次灰", scarlet: "緋月", hacker: "黑客",
+            sunrise: "日出", cotton: "棉花糖", rainbow: "彩虹",
+            forest: "森林", minimal: "極簡"
+        };
+
+        const THEME_CLASSES = {
+            light: "", dark: "dark-mode", cyber: "cyber-mode", sakura: "sakura-mode",
+            eva: "eva-mode", nature: "nature-mode", vivid: "vivid-mode",
+            blackgray: "blackgray-mode", scarlet: "scarlet-mode", hacker: "hacker-mode",
+            sunrise: "sunrise-mode", cotton: "cotton-mode", rainbow: "rainbow-mode",
+            forest: "forest-mode", minimal: "minimal-mode"
+        };
+
+        const defaultTasks = () => [
+            { title: "參與 M.C.J: 和 M.C.J 一起跳舞", rule: "1次=1分", reqPerScore: 1, points: 1, count: 0, lastUpdate: null },
+            { title: "參與 M.C.J: 喔耶！生存戰隨機", rule: "1次=1分", reqPerScore: 1, points: 1, count: 0, lastUpdate: null },
+            { title: "參與 M.C.J: 輪轉地圖3", rule: "1次=1分", reqPerScore: 1, points: 1, count: 0, lastUpdate: null },
+            { title: "獲得 農場小丑的誠意", rule: "2個=3分", reqPerScore: 2, points: 3, count: 0, lastUpdate: null },
+            { title: "獲得 音樂串流使用券", rule: "2個=3分", reqPerScore: 2, points: 3, count: 0, lastUpdate: null },
+            { title: "獲得 明星幣組合", rule: "2個=2分", reqPerScore: 2, points: 2, count: 0, lastUpdate: null }
+        ];
+
+        const dateList = [
+            "2026/11/18","2026/11/19","2026/11/20","2026/11/21","2026/11/22",
+            "2026/11/23","2026/11/24","2026/11/25","2026/11/26","2026/11/27",
+            "2026/11/28","2026/11/29","2026/11/30","2026/12/1"
+        ];
+
+        let currentPerson = 0;
+        let personsData = [];
+        let personNames = [...DEFAULT_NAMES];
+        let renamingIdx = -1;
+
+        function loadAllData() {
+            try {
+                const raw = localStorage.getItem("debut_multi_v2");
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    personsData = parsed.persons || [];
+                    personNames = parsed.names || [...DEFAULT_NAMES];
+                    while (personsData.length < PERSON_COUNT) personsData.push(createEmptyPerson());
+                    while (personNames.length < PERSON_COUNT) personNames.push(DEFAULT_NAMES[personNames.length] || `分身${personNames.length}`);
+                    personsData.forEach(p => {
+                        p.tasks.forEach(t => { if (t.lastUpdate) t.lastUpdate = new Date(t.lastUpdate); });
+                        if (p.totalLastUpdate) p.totalLastUpdate = new Date(p.totalLastUpdate);
+                    });
+                } else {
+                    const old = localStorage.getItem("debut_multi_v1");
+                    if (old) {
+                        personsData = JSON.parse(old);
+                        while (personsData.length < PERSON_COUNT) personsData.push(createEmptyPerson());
+                        personsData.forEach(p => {
+                            p.tasks.forEach(t => { if (t.lastUpdate) t.lastUpdate = new Date(t.lastUpdate); });
+                            if (p.totalLastUpdate) p.totalLastUpdate = new Date(p.totalLastUpdate);
+                        });
+                    } else {
+                        personsData = Array.from({ length: PERSON_COUNT }, () => createEmptyPerson());
+                    }
+                    personNames = [...DEFAULT_NAMES];
+                }
+            } catch (e) {
+                personsData = Array.from({ length: PERSON_COUNT }, () => createEmptyPerson());
+                personNames = [...DEFAULT_NAMES];
+            }
+        }
+
+        function createEmptyPerson() {
+            return { tasks: defaultTasks(), activeDates: {}, totalLastUpdate: null, alerted30: false };
+        }
+
+        function saveAllData() {
+            localStorage.setItem("debut_multi_v2", JSON.stringify({
+                names: personNames,
+                persons: personsData.map(p => ({
+                    tasks: p.tasks.map(t => ({ ...t, lastUpdate: t.lastUpdate ? t.lastUpdate.toISOString() : null })),
+                    activeDates: p.activeDates,
+                    totalLastUpdate: p.totalLastUpdate ? p.totalLastUpdate.toISOString() : null,
+                    alerted30: p.alerted30
+                }))
+            }));
+        }
+
+        function getCurrent() { return personsData[currentPerson]; }
+
+        function formatDateTime(date) {
+            if (!date) return "--";
+            const y = date.getFullYear();
+            const m = String(date.getMonth() + 1).padStart(2, "0");
+            const d = String(date.getDate()).padStart(2, "0");
+            const h = String(date.getHours()).padStart(2, "0");
+            const min = String(date.getMinutes()).padStart(2, "0");
+            const s = String(date.getSeconds()).padStart(2, "0");
+            return `${y}/${m}/${d} ${h}:${min}:${s}`;
+        }
+
+        function calcRowScore(item) { return Math.floor(item.count / item.reqPerScore) * item.points; }
+        function calcTotalScore(tasks) { return tasks.reduce((a, t) => a + calcRowScore(t), 0); }
+        function getCompletedDays(ad) { return Object.keys(ad).filter(d => ad[d]).length; }
+
+        function renderSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.innerHTML = "";
+            const titleDiv = document.createElement("div");
+            titleDiv.className = "sidebar-title";
+            titleDiv.textContent = "角色名稱";
+            sidebar.appendChild(titleDiv);
+
+            for (let i = 0; i < PERSON_COUNT; i++) {
+                const total = calcTotalScore(personsData[i].tasks);
+                const days = getCompletedDays(personsData[i].activeDates);
+                const tab = document.createElement("div");
+                tab.className = "person-tab" + (i === currentPerson ? " active" : "");
+                if (renamingIdx === i) {
+                    const input = document.createElement("input");
+                    input.className = "rename-input";
+                    input.id = "renameInput";
+                    input.maxLength = 10;
+                    input.value = personNames[i];
+                    tab.appendChild(input);
+                    sidebar.appendChild(tab);
+                    input.focus();
+                    input.select();
+                    input.onblur = () => finishRename(i, input.value);
+                    input.onkeydown = (e) => {
+                        if (e.key === "Enter") { e.preventDefault(); input.blur(); }
+                        else if (e.key === "Escape") { renamingIdx = -1; renderSidebar(); }
+                    };
+                } else {
+                    const nameSpan = document.createElement("span");
+                    nameSpan.className = "tab-name";
+                    nameSpan.textContent = personNames[i];
+
+                    const metaSpan = document.createElement("span");
+                    metaSpan.className = "tab-meta";
+                    metaSpan.textContent = `${total} 分 · ${days} 日`;
+
+                    const editHint = document.createElement("span");
+                    editHint.className = "edit-hint";
+                    editHint.textContent = "✎";
+
+                    tab.appendChild(nameSpan);
+                    tab.appendChild(metaSpan);
+                    tab.appendChild(editHint);
+
+                    tab.onclick = (e) => {
+                        if (e.target.classList.contains("edit-hint") || e.detail === 2) { startRename(i); return; }
+                        switchPerson(i);
+                    };
+                    let pressTimer;
+                    tab.addEventListener("touchstart", () => { pressTimer = setTimeout(() => startRename(i), 600); }, { passive: true });
+                    tab.addEventListener("touchend", () => clearTimeout(pressTimer));
+                    tab.addEventListener("touchmove", () => clearTimeout(pressTimer));
+                    sidebar.appendChild(tab);
+                }
+            }
+        }
+
+        function startRename(idx) { renamingIdx = idx; renderSidebar(); }
+        function finishRename(idx, newName) {
+            personNames[idx] = (newName || "").trim().slice(0, 10) || DEFAULT_NAMES[idx];
+            renamingIdx = -1;
+            saveAllData();
+            renderSidebar();
+        }
+
+        function renderTasks() {
+            const person = getCurrent();
+            const container = document.getElementById("taskList");
+            container.innerHTML = "";
+            person.tasks.forEach((item, idx) => {
+                const row = document.createElement("div");
+                row.className = "task-row";
+
+                const taskBox = document.createElement("div");
+                taskBox.className = "task-box";
+
+                const boxTitle = document.createElement("span");
+                boxTitle.className = "task-box-title";
+                boxTitle.textContent = item.title;
+
+                const hint = document.createElement("span");
+                hint.className = "task-hint";
+                hint.textContent = item.rule;
+
+                taskBox.appendChild(boxTitle);
+                taskBox.appendChild(hint);
+
+                const minusBtn = document.createElement("button");
+                minusBtn.className = "step-btn step-minus";
+                minusBtn.textContent = "−";
+                minusBtn.onclick = () => changeCount(idx, -1);
+
+                const countDiv = document.createElement("div");
+                countDiv.className = "count-display";
+                const countLabel = document.createElement("span");
+                countLabel.className = "mobile-label";
+                countLabel.textContent = "次數:";
+                countDiv.appendChild(countLabel);
+                countDiv.appendChild(document.createTextNode(String(item.count)));
+
+                const plusBtn = document.createElement("button");
+                plusBtn.className = "step-btn step-plus";
+                plusBtn.textContent = "+";
+                plusBtn.onclick = () => changeCount(idx, 1);
+
+                const scoreDiv = document.createElement("div");
+                scoreDiv.className = "score-display";
+                const scoreLabel = document.createElement("span");
+                scoreLabel.className = "mobile-label";
+                scoreLabel.textContent = "分數:";
+                scoreDiv.appendChild(scoreLabel);
+                scoreDiv.appendChild(document.createTextNode(String(calcRowScore(item))));
+
+                const timeDiv = document.createElement("div");
+                timeDiv.className = "row-update-time";
+                const timeLabel = document.createElement("span");
+                timeLabel.className = "mobile-label";
+                timeLabel.textContent = "更新:";
+                timeDiv.appendChild(timeLabel);
+                timeDiv.appendChild(document.createTextNode(item.lastUpdate ? formatDateTime(item.lastUpdate) : "--"));
+
+                row.appendChild(taskBox);
+                row.appendChild(minusBtn);
+                row.appendChild(countDiv);
+                row.appendChild(plusBtn);
+                row.appendChild(scoreDiv);
+                row.appendChild(timeDiv);
+
+                container.appendChild(row);
+            });
+        }
+
+        function renderTotal() {
+            const person = getCurrent();
+            const total = calcTotalScore(person.tasks);
+            document.getElementById("totalScore").textContent = total;
+            document.getElementById("totalUpdateTime").textContent = person.totalLastUpdate
+                ? "更新時間: " + formatDateTime(person.totalLastUpdate) : "更新時間: --";
+            if (total >= 30 && !person.alerted30) {
+                person.alerted30 = true;
+                document.getElementById("goalMsg").textContent = `目前累積總分為 ${total} 分，已成功達到 30 分目標！`;
+                document.getElementById("goalModal").classList.add("show");
+                saveAllData();
+            } else if (total < 30) person.alerted30 = false;
+        }
+
+        function renderDates() {
+            const person = getCurrent();
+            const grid = document.getElementById("dateGrid");
+            grid.innerHTML = "";
+            dateList.forEach(date => {
+                const cell = document.createElement("div");
+                cell.className = "date-cell" + (person.activeDates[date] ? " active" : "");
+                cell.textContent = date;
+                cell.onclick = () => toggleDate(date);
+                grid.appendChild(cell);
+            });
+            const countCell = document.createElement("div");
+            countCell.className = "date-cell completed-count";
+            countCell.textContent = `完成日數: ${getCompletedDays(person.activeDates)}`;
+            grid.appendChild(countCell);
+        }
+
+        function renderAll() { renderSidebar(); renderTasks(); renderTotal(); renderDates(); }
+
+        function switchPerson(idx) {
+            if (idx === currentPerson || renamingIdx !== -1) return;
+            currentPerson = idx;
+            renderAll();
+            localStorage.setItem("debut_current_person", currentPerson);
+        }
+
+        function changeCount(idx, delta) {
+            const person = getCurrent();
+            if (person.tasks[idx].count + delta < 0) return;
+            const prev = calcTotalScore(person.tasks);
+            person.tasks[idx].count += delta;
+            person.tasks[idx].lastUpdate = new Date();
+            if (calcTotalScore(person.tasks) !== prev) person.totalLastUpdate = new Date();
+            saveAllData();
+            renderAll();
+        }
+
+        function toggleDate(date) {
+            const person = getCurrent();
+            person.activeDates[date] = !person.activeDates[date];
+            if (!person.activeDates[date]) delete person.activeDates[date];
+            saveAllData();
+            renderDates();
+            renderSidebar();
+        }
+
+        function resetAll() {
+            const person = getCurrent();
+            person.tasks.forEach(t => { t.count = 0; t.lastUpdate = null; });
+            person.totalLastUpdate = null;
+            person.alerted30 = false;
+            saveAllData();
+            renderAll();
+        }
+
+        function closeModal() { document.getElementById("goalModal").classList.remove("show"); }
+
+        function setTheme(mode) {
+            Object.values(THEME_CLASSES).forEach(cls => { if (cls) document.body.classList.remove(cls); });
+            if (THEME_CLASSES[mode]) document.body.classList.add(THEME_CLASSES[mode]);
+            document.querySelectorAll(".theme-dropdown-item").forEach(item => {
+                item.classList.toggle("active", item.dataset.theme === mode);
+            });
+            document.getElementById("currentThemeLabel").textContent = THEME_LABELS[mode] || "光明";
+            localStorage.setItem("debut_theme_v1", mode);
+        }
+        function selectTheme(mode) { setTheme(mode); closeThemeDropdown(); }
+        function toggleThemeDropdown(e) {
+            e.stopPropagation();
+            const d = document.getElementById("themeDropdown");
+            const b = document.getElementById("themeTrigger");
+            if (d.classList.contains("show")) closeThemeDropdown();
+            else { d.classList.add("show"); b.classList.add("open"); }
+        }
+        function closeThemeDropdown() {
+            document.getElementById("themeDropdown").classList.remove("show");
+            document.getElementById("themeTrigger").classList.remove("open");
+        }
+        document.addEventListener("click", e => {
+            const wrap = document.querySelector(".theme-trigger-wrap");
+            if (wrap && !wrap.contains(e.target)) closeThemeDropdown();
+        });
+
+        // 字體大小
+        function setFontSize(scale) {
+            document.documentElement.style.setProperty("--font-scale", scale);
+            document.body.classList.toggle("lg-font", scale >= 1.3 && scale < 2);
+            document.body.classList.toggle("xl-font", scale >= 2);
+            document.querySelectorAll(".font-btn").forEach(btn => {
+                btn.classList.toggle("active", parseFloat(btn.dataset.scale) === scale);
+            });
+            localStorage.setItem("debut_font_scale", scale);
+        }
+
+        // 使用教學視窗
+        function openHelp() {
+            const win = document.getElementById("helpWindow");
+            win.classList.add("show");
+            win.style.left = "50%";
+            win.style.top = "80px";
+            win.style.transform = "translateX(-50%)";
+        }
+        function closeHelp() {
+            document.getElementById("helpWindow").classList.remove("show");
+        }
+
+        // 拖曳教學視窗
+        (function enableHelpDrag() {
+            const win = document.getElementById("helpWindow");
+            const bar = document.getElementById("helpDragBar");
+            let dragging = false, ox = 0, oy = 0;
+            bar.addEventListener("mousedown", e => {
+                dragging = true;
+                const rect = win.getBoundingClientRect();
+                ox = e.clientX - rect.left;
+                oy = e.clientY - rect.top;
+                win.style.transform = "none";
+                win.style.left = rect.left + "px";
+                win.style.top = rect.top + "px";
+            });
+            document.addEventListener("mousemove", e => {
+                if (!dragging) return;
+                win.style.left = (e.clientX - ox) + "px";
+                win.style.top = (e.clientY - oy) + "px";
+            });
+            document.addEventListener("mouseup", () => dragging = false);
+            // 觸控
+            bar.addEventListener("touchstart", e => {
+                dragging = true;
+                const t = e.touches[0];
+                const rect = win.getBoundingClientRect();
+                ox = t.clientX - rect.left;
+                oy = t.clientY - rect.top;
+                win.style.transform = "none";
+                win.style.left = rect.left + "px";
+                win.style.top = rect.top + "px";
+            }, { passive: true });
+            document.addEventListener("touchmove", e => {
+                if (!dragging) return;
+                const t = e.touches[0];
+                win.style.left = (t.clientX - ox) + "px";
+                win.style.top = (t.clientY - oy) + "px";
+            }, { passive: true });
+            document.addEventListener("touchend", () => dragging = false);
+        })();
+
+        (function init() {
+            loadAllData();
+            const sp = parseInt(localStorage.getItem("debut_current_person"));
+            if (!isNaN(sp) && sp >= 0 && sp < PERSON_COUNT) currentPerson = sp;
+            const st = localStorage.getItem("debut_theme_v1");
+            if (st && THEME_LABELS[st]) setTheme(st); else setTheme("light");
+            const fs = parseFloat(localStorage.getItem("debut_font_scale"));
+            if (fs && [0.9, 1, 1.35, 2.2].includes(fs)) setFontSize(fs);
+            renderAll();
+        })();
+    </script>
+</body>
+</html>
